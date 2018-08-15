@@ -12,3 +12,12 @@ Start up Mongodb GUI Tool:
 adminMogo guideline: https://www.cnblogs.com/bfwbfw/p/7872774.html
 
 model name is the table name in mongodb
+
+How to prepare book material
+1.book page list
+2.book audio list
+3.book lyrics
+4.index page image
+5.compress it to zip file
+6.upload to bookSource folder
+7.create a book data in database
