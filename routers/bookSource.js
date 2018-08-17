@@ -5,9 +5,10 @@ const Book = require('../models/book')
 
 //getAllBookList(start, end)
 router.get('/getAllBookList', function (req, res) {
-    Book.getAllBookList(-1, -1, function(books){
+	var obj = url.parse(req.url, true).query
+    Book.getAllBookList(function(books){
         res.json(books)
-    })
+    }, obj.booktitle)
 })
 
 //getBookInformation

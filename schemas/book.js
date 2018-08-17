@@ -15,9 +15,9 @@ var BookSchema = mongoose.Schema({
 	}]
 })
 
-BookSchema.statics.getAllBookList = function(start, end, cb) {
+BookSchema.statics.getAllBookList = function(cb, booktitle, start, end, ) {
 	//model.find(condition, [fields], [options], callback)
-	this.model('bookmodels').find({}, function(err, books) {
+	this.model('bookmodels').find({bookTitle:{$regex:'' + booktitle + '', $options:'i'}}, function(err, books) {
 		cb(books)
 	})
 }

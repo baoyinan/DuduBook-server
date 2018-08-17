@@ -3,6 +3,7 @@ var mongoose = require('mongoose')
 var app = express()
 
 var bookSourceRouter = require('./routers/bookSource')
+var userRouter = require('./routers/user')
 
 mongoose.connect('mongodb://localhost:27017/test');
 const con = mongoose.connection;
@@ -23,6 +24,7 @@ app.set('view engine', 'ejs')
 	.set('views', './views')
 	.use(express.static(__dirname + '/bookSource'))
 	.use('/booksource/', bookSourceRouter)
+	.use('/user', userRouter)
 	.listen(3000, function () {
 	    console.log('Server start at http://localhost:3000')
 	})
