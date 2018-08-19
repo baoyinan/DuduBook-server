@@ -38,12 +38,17 @@ It is used to check data as GUI manager. it can be ignored if do not need to che
 ### 服务器端存放的绘本目录结构
 
 bookID_bookName (文件夹)
-    pages (文件夹，包含的是每一页的图片，jpg为后缀名)
-	audios (文件夹，存放的是每一页对应的音频文件，mp3为后缀名)
-	lyric.txt (文件，绘本所讲述的文字，每一行对应一页内容，如果没有则留空一行)
-	index.jpg （文件，作为绘本封面图片，在书架列表中显示）
-	bookID_bookName.zip （文件，上述材料准备好后压缩的一个文件，会下载到客户端进行解压缩）
 
+    pages (文件夹，包含的是每一页的图片，jpg为后缀名)
+    
+	audios (文件夹，存放的是每一页对应的音频文件，mp3为后缀名)
+	
+	lyric.txt (文件，绘本所讲述的文字，每一行对应一页内容，如果没有则留空一行)
+	
+	index.jpg （文件，作为绘本封面图片，在书架列表中显示）
+	
+	bookID_bookName.zip （文件，上述材料准备好后压缩的一个文件，会下载到客户端进行解压缩）
+	
 ### 制作步骤介绍
 
 1. 准备绘本页：用复制黏贴的方式将所有页作为图片的方式保存到pages目录，后缀名为jpg 
