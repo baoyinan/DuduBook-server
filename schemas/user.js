@@ -6,7 +6,8 @@ var UserSchema = mongoose.Schema({
 	phone: String,
 	scoreTotal: Number,
 	coinTotal: Number,
-	status: String
+	status: String,
+	coinDetail: []
 })
 
 module.exports = UserSchema
