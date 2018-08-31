@@ -53,6 +53,50 @@ router.get('/loginAward', function(req, res){
 	})
 })
 
+router.get('/authlogin', function(req, res){
+	var obj = url.parse(req.url, true).query
+	
+	user.find({username:obj.username, sex:obj.sex}, function(err, userList){
+		if(userList.length>0){
+			res.json({
+				errcode: 0,
+				errmsg: ''
+			})
+		}else{
+			user.create({
+				username: obj.username,
+				userpwd: 'auth',
+				email: '',
+				coinTotal: constant.coinAwardInitialize,
+				status: 'active',
+				sex: obj.sex,
+				province: obj.province,
+				city: obj.city,
+				headimgurl: obj.headimgurl,
+				openid: obj.openid,
+				unionid: obj.unionid,
+				coinDetail: [{
+					coinType: constant.coinTypeRegister,
+					coinNum: constant.coinAwardInitialize,
+					coinLeft: constant.coinAwardInitialize,
+					comment: '初次注册送'+constant.coinAwardInitialize+'金币',
+					dateTime: formatDate(new Date())
+				}]
+			}, function(err, userEntity){
+				if(err){
+					console.log('Fail to create user:'+obj.username)
+				}else{
+					console.log('Success to create user:'+obj.username)
+					res.json({
+						errcode: 0,
+						errmsg: ''
+					})
+				}
+			})
+		}
+	})
+})
+
 router.get('/login', function(req, res) {
 	var obj = url.parse(req.url, true).query
 
@@ -77,8 +121,7 @@ router.get('/login', function(req, res) {
 
 router.get('/saveUser', function(req, res) {
 	var obj = url.parse(req.url, true).query
-	var intiateCoin = 500
-	var referCoin = 100
+	
 	//check if user or email exist
 	user.find({
 		$or: [{
@@ -106,21 +149,19 @@ router.get('/saveUser', function(req, res) {
 				username: obj.username,
 				userpwd: obj.userpwd,
 				email: obj.email,
-				coinTotal: intiateCoin,
+				coinTotal: constant.coinAwardInitialize,
 				status: 'active',
 				coinDetail: [{
-					coinType: constant.COIN_TYPE_REGISTER,
-					coinNum: constant.COIN_AWARD_INITIALIZE,
-					coinLeft: 500,
-					comment: '初次注册送500金币',
+					coinType: constant.coinTypeRegister,
+					coinNum: constant.coinAwardInitialize,
+					coinLeft: constant.coinAwardInitialize,
+					comment: '初次注册送'+constant.coinAwardInitialize+'金币',
 					dateTime: formatDate(new Date())
 				}]
 			}, function(err, userEntity) {
 				if(err) {
 					console.log('Fail to create user!')
 				} else {
-					//add coin history for this user
-
 					//response the result
 					res.json({
 						errcode: 0,

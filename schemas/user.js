@@ -7,7 +7,13 @@ var UserSchema = mongoose.Schema({
 	scoreTotal: Number,
 	coinTotal: Number,
 	status: String,
-	coinDetail: []
+	coinDetail: [],
+	sex: String,
+	city: String,
+	province: String,
+	headimgurl: String,
+	unionid: String,
+	openid: String,
 })
 
 module.exports = UserSchema
