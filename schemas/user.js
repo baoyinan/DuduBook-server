@@ -8,6 +8,7 @@ var UserSchema = mongoose.Schema({
 	coinTotal: Number,
 	status: String,
 	coinDetail: [],
+	bookDownloadHistory: [],
 	sex: String,
 	city: String,
 	province: String,

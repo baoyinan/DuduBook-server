@@ -21,7 +21,7 @@ router.get('/loginAward', function(req, res){
 		var loginAward = true
 		for(var i = userEntity.coinDetail.length - 1; i >= 0; i--) {
 			var coinRecord = userEntity.coinDetail[i]
-			if(coinRecord.coinType == constant.cointTypeLogin) {
+			if(coinRecord.coinType == constant.coinTypeLogin) {
 				if(coinRecord.dateTime === today) {
 					loginAward = false
 				}
@@ -33,7 +33,7 @@ router.get('/loginAward', function(req, res){
 			//assign the login award
 			userEntity.coinTotal += constant.coinAwardLogin
 			userEntity.coinDetail.push({
-				coinType: constant.cointTypeLogin,
+				coinType: constant.coinTypeLogin,
 				coinNum: constant.coinAwardLogin,
 				coinLeft: userEntity.coinTotal,
 				comment: '每日登录奖励' + constant.coinAwardLogin + '金币',

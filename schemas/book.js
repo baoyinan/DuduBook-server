@@ -5,6 +5,8 @@ var BookSchema = mongoose.Schema({
 	bookType: String,
 	author: String,
 	description: String,
+	discount: Number,
+	bookCoin: Number,
 	downloadCount: Number,
 	averageCommentScore: Number,
 	commentDetail: [{
