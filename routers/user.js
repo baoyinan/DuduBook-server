@@ -11,6 +11,12 @@ router.get('/sendmail', function(req, res) {
 	})
 })
 
+router.get('/getscore',function(req,res){
+	var obj=url.parse(req.url,true).query
+	user.find({username: obj.username},function(err,scoreList){
+		res.json({data:scoreList})
+	})
+})
 router.get('/loginAward', function(req, res){
 	var obj = url.parse(req.url, true).query
 	
@@ -181,5 +187,4 @@ function formatDate(dt) {
 	var date_v = new Date(dt)
 	return(date_v.getYear() + 1900) + '-' + (date_v.getMonth() + 1) + '-' + date_v.getDate()
 }
-
 module.exports = router
